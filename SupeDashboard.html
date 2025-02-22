@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Supe Dashboard</title>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Orbitron', sans-serif;
+            background: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTNYdLSZMTzv0E5fUYJIGBwMvvKKjB7TAw0XA&s') no-repeat center center fixed; background-size: cover;
+            color: white;
+            text-align: center;
+        }
+        .dashboard {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 20px;
+            padding: 20px;
+            justify-content: center;
+        }
+        .card {
+            background: linear-gradient(135deg, rgba(255, 49, 49, 0.9), rgba(200, 20, 20, 0.9));
+            padding: 25px;
+            border-radius: 15px;
+            box-shadow: 0px 0px 15px rgba(255, 49, 49, 0.8);
+            transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+            text-align: left;
+        }
+        .card:hover {
+            transform: scale(1.05);
+            box-shadow: 0px 0px 20px rgba(255, 49, 49, 1);
+        }
+        .card h2 {
+            border-bottom: 2px solid white;
+            padding-bottom: 5px;
+        }
+        .card p {
+            margin: 10px 0;
+        }
+        .update-button {
+            background: black;
+            color: white;
+            font-weight: bold;
+            padding: 10px 15px;
+            border: none;
+            cursor: pointer;
+            border-radius: 5px;
+            transition: 0.3s;
+        }
+        .update-button:hover {
+            background: white;
+            color: black;
+        }
+    </style>
+</head>
+<body>
+    <div style="position: absolute; top: 10px; left: 20px; font-size: 24px; font-weight: bold; color: #FF3131;">SupeWatch</div>
+    <div style="position: absolute; top: 10px; right: 20px;">
+        <button onclick="window.location.href='navhub.html'" style="background: #FF3131; color: white; border: none; padding: 10px 15px; font-weight: bold; cursor: pointer; border-radius: 5px;">Back to Nav Hub</button>
+    </div>
+    <div style="position: absolute; top: 10px; left: 20px; font-size: 24px; font-weight: bold; color: #FF3131;">SupeWatch</div>
+    <h1>Supe Database and Tracking</h1>
+    <div class="dashboard">
+        <div class="card">
+            <h2>Homelander</h2>
+            <p><strong>Superpowers:</strong> Flight, Laser Eyes, Super Strength</p>
+            <p><strong>Affiliation:</strong> The Seven</p>
+            <p><strong>Status:</strong> <span id="homelander-status">Last spotted in New York</span></p>
+            <button class="update-button" onclick="updateLocation('homelander-status', true)">Update Info</button>
+        </div>
+        <div class="card">
+            <h2>A-Train</h2>
+            <p><strong>Superpowers:</strong> Super Speed</p>
+            <p><strong>Affiliation:</strong> The Seven</p>
+            <p><strong>Status:</strong> <span id="atrain-status">Last spotted in Los Angeles</span></p>
+            <button class="update-button" onclick="updateLocation('atrain-status', true)">Update Info</button>
+        </div>
+        <div class="card">
+            <h2>Queen Maeve</h2>
+            <p><strong>Superpowers:</strong> Super Strength, Durability</p>
+            <p><strong>Affiliation:</strong> The Seven</p>
+            <p><strong>Status:</strong> Last spotted in Washington D.C.</p>
+        </div>
+        <div class="card">
+            <h2>Black Noir</h2>
+            <p><strong>Superpowers:</strong> Stealth, Combat Mastery</p>
+            <p><strong>Affiliation:</strong> The Seven</p>
+            <p><strong>Status:</strong> Unknown location</p>
+        </div>
+        <div class="card">
+            <h2>Sister Sage</h2>
+            <p><strong>Superpowers:</strong> Super Intelligence, Tactical Genius</p>
+            <p><strong>Affiliation:</strong> The Seven</p>
+            <p><strong>Status:</strong> Last spotted in Boston</p>
+        </div>
+        <div class="card">
+            <h2>Firecracker</h2>
+            <p><strong>Superpowers:</strong> Explosive Energy Blasts</p>
+            <p><strong>Affiliation:</strong> Independent</p>
+            <p><strong>Status:</strong> Last spotted in Houston</p>
+        </div>
+        <div class="card">
+            <h2>Starlight</h2>
+            <p><strong>Superpowers:</strong> Light Manipulation</p>
+            <p><strong>Affiliation:</strong> The Seven</p>
+            <p><strong>Status:</strong> Last spotted in Chicago</p>
+        </div>
+        <div class="card">
+            <h2>The Deep</h2>
+            <p><strong>Superpowers:</strong> Aquatic Communication, Enhanced Swimming</p>
+            <p><strong>Affiliation:</strong> The Seven</p>
+            <p><strong>Status:</strong> Last spotted in Atlantis</p>
+        </div>
+    </div>
+    <script>
+        function updateLocation(supeId, canChangeCity) {
+            const locations = ["Chicago", "San Francisco", "Miami", "Dallas", "London", "Tokyo", "Berlin", "Paris", "Moscow", "Sydney", "Toronto", "Dubai", "Mexico City", "Seoul", "Hong Kong"];
+            if (canChangeCity) {
+                const newLocation = locations[Math.floor(Math.random() * locations.length)];
+                document.getElementById(supeId).innerText = "Last spotted in " + newLocation;
+            }
+        }
+    </script>
+    <footer style="background: rgba(0, 0, 0, 0.8); color: white; text-align: center; padding: 20px; margin-top: 30px;">
+        <h2>All Rights Reserved</h2>
+        <p>Email: contact@supewatch.com | Phone: +1 800-SUPE-WATCH</p>
+    </footer>
+</body>
+</html>

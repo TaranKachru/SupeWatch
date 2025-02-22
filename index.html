@@ -10,9 +10,24 @@
             color: #FFFFFF;
             font-family: Arial, sans-serif;
             display: flex;
-            justify-content: center;
+            flex-direction: column;
             align-items: center;
+            justify-content: center;
             height: 100vh;
+            margin: 0;
+            position: relative;
+        }
+        .supewatch-title {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            font-size: 40px;
+            font-weight: bold;
+            color: red;
+            text-shadow: -1px -1px 0 blue, 1px -1px 0 blue, -1px 1px 0 blue, 1px 1px 0 blue;
+            background: none;
+            padding: 0;
+            border: none;
         }
         .container {
             background-color: #1A1A1A;
@@ -56,6 +71,7 @@
     </style>
 </head>
 <body>
+    <div class="supewatch-title">SupeWatch</div>
     <div class="container">
         <h1>SupeWatch Registration</h1>
         <p>Track your favorite supes and stay updated on their latest activities.</p>

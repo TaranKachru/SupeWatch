@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SupeWatch - Newsfeed</title>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            margin: 0;
+            position: relative;
+            font-family: 'Orbitron', sans-serif;
+            background: black;
+            color: white;
+            text-align: center;
+            transition: filter 0.5s ease-in-out;
+        }
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px;
+            background: rgba(255, 49, 49, 0.8);
+        }
+        .logo {
+            font-size: 24px;
+            font-weight: bold;
+            color: white;
+        }
+        .back-button {
+            background: black;
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            font-weight: bold;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+        .back-button:hover {
+            background: gray;
+        }
+        .news-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 20px;
+        }
+        .news-card {
+            background: rgba(255, 49, 49, 0.8);
+            padding: 20px;
+            border-radius: 10px;
+            width: 80%;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+        .news-text {
+            flex: 1;
+            text-align: left;
+        }
+        iframe {
+            width: 400px;
+            height: 225px;
+            border-radius: 10px;
+        }
+        .age-verification {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.9);
+            color: white;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+        }
+        .age-verification button {
+            background: red;
+            color: white;
+            padding: 15px 30px;
+            border: none;
+            font-size: 18px;
+            margin: 10px;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+        .age-verification button:hover {
+            background: darkred;
+        }
+        .category-filter {
+            margin: 20px;
+        }
+        .category-filter select {
+            padding: 10px;
+            font-size: 16px;
+            border-radius: 5px;
+            background: black;
+            color: white;
+            border: 2px solid red;
+            cursor: pointer;
+        }
+        .hidden {
+            display: none;
+        }
+    </style>
+    <script>
+        // Age verification logic
+        function verifyAge(choice) {
+            if (choice === 'yes') {
+                document.getElementById('ageCheck').style.display = 'none';
+                document.querySelector('.content').style.display = 'block';
+            } else {
+                window.close();
+            }
+        }
+
+        // Category filter logic
+        function filterNews(category) {
+            const allNewsCards = document.querySelectorAll('.news-card');
+            allNewsCards.forEach(card => {
+                if (category === 'all' || card.getAttribute('data-category') === category) {
+                    card.classList.remove('hidden');
+                } else {
+                    card.classList.add('hidden');
+                }
+            });
+        }
+    </script>
+</head>
+<body>
+    <div class="age-verification" id="ageCheck">
+        <h2>Warning: This website contains graphic content. Are you 18 or older?</h2>
+        <button onclick="verifyAge('yes')">Yes, I am 18+</button>
+        <button onclick="verifyAge('no')">No</button>
+    </div>
+    
+    <div class="content" style="display: none;">
+        <div class="header">
+            <div class="logo">SupeWatch Newsfeed</div>
+            <button class="back-button" onclick="window.location.href='navhub.html'">Back to Nav Hub</button>
+        </div>
+        <div class="category-filter">
+            <select onchange="filterNews(this.value)">
+                <option value="all">All News</option>
+                <option value="scandals">Scandals</option>
+                <option value="collateral-damage">Collateral Damage</option>
+                <option value="public-outcry">Public Outcry</option>
+            </select>
+        </div>
+        <div class="news-container">
+            <!-- All News -->
+            <div class="news-card" data-category="scandals">
+                <div class="news-text">
+                    <h3>Homelander's Plane Incident</h3>
+                    <p>Homelander and Queen Maeve let a commercial plane crash, refusing to save the passengers.</p>
+                </div>
+                <iframe width="560" height="315" src="https://www.youtube.com/embed/0YbEA-gJ6yg?si=-klAqGDKSe5MTEda&start=95&autoplay=1&controls=1&showinfo=0&modestbranding=1" title="YouTube video player"></iframe>
+            </div>
+            <div class="news-card" data-category="collateral-damage">
+                <div class="news-text">
+                    <h3>A-Train Kills Robin</h3>
+                    <p>A-Train runs through Hughie's girlfriend Robin at super-speed, killing her instantly.</p>
+                </div>
+                <iframe width="560" height="315" src="https://www.youtube.com/embed/OZWOlpiMOcY?si=F-_pHOvGD_4_nccx&start=35&autoplay=1&controls=1&showinfo=0&modestbranding=1" title="YouTube video player"></iframe>
+            </div>
+            <div class="news-card" data-category="public-outcry">
+                <div class="news-text">
+                    <h3>Homelander's Speech at Vought Tower</h3>
+                    <p>Homelander shocks the world with a speech revealing his true beliefs and brutal honesty.</p>
+                </div>
+                <iframe width="560" height="315" src="https://www.youtube.com/embed/Uow7_69AKvg?si=xHf1GjovbrS5a4aD&amp;start=35" title="YouTube video player"></iframe>
+            </div>
+            <div class="news-card" data-category="scandals">
+                <div class="news-text">
+                    <h3>The Deep’s Sexual Assault Scandal</h3>
+                    <p>The Deep gets exposed for sexually harassing new recruits and is temporarily removed from The Seven.</p>
+                </div>
+                <iframe width="560" height="315" src="https://www.youtube.com/embed/EUvQ9uysPs8?si=51wHEA-a1SKII91O&amp;start=147" title="YouTube video player"></iframe>
+            </div>
+            <div class="news-card" data-category="collateral-damage">
+                <div class="news-text">
+                    <h3>Homelander Kills a Terrorist on Live TV</h3>
+                    <p>Executes Naqib in the Middle East, causing international controversy.</p>
+                </div>
+                <iframe width="560" height="315" src="https://www.youtube.com/embed/1WiYk6peewk?si=6TrT7PvajMRgnh4l&amp;start=24" title="YouTube video player"></iframe>
+            </div>
+            <div class="news-card" data-category="collateral-damage">
+                <div class="news-text">
+                    <h3>The Deep Kills a Dolphin</h3>
+                    <p>Tries to free a dolphin from Oceanland, but it gets crushed by a truck.</p>
+                </div>
+                <iframe width="560" height="315" src="https://www.youtube.com/embed/J-h3lg9cAPY?si=sXqNZM5fWGmSoLlf&amp;start=52" title="YouTube video player"></iframe>
+            </div>
+            <div class="news-card" data-category="public-outcry">
+                <div class="news-text">
+                    <h3>Homelander Forces Blindspot Out of The Seven</h3>
+                    <p>Brutally injures a blind supe after pretending to welcome him.</p>
+                </div>
+                <iframe width="560" height="315" src="https://www.youtube.com/embed/3Eeg4BbYw-E?si=KO-NhCOPmHI9HkNB&amp;start=77" title="YouTube video player"></iframe>
+            </div>
+            <div class="news-card" data-category="public-outcry">
+                <div class="news-text">
+                    <h3>Stormfront Exposed as a Nazi</h3>
+                    <p>Revealed to be a racist former superhero from WWII, causing public outrage.</p>
+                </div>
+                <iframe width="560" height="315" src="https://www.youtube.com/embed/HKZW7iP_dm4?si=HkP2d350DUy2NC3r" title="YouTube video player"></iframe>
+            </div>
+            <div class="news-card" data-category="collateral-damage">
+                <div class="news-text">
+                    <h3>Homelander Murders a Protester</h3>
+                    <p>Beams a protester’s head off in a fantasy sequence that reflects his real desires.</p>
+                </div>
+                <iframe width="560" height="315" src="https://www.youtube.com/embed/GJyVSLPveIc?si=4XginhNObxriV_F0&amp;start=55" title="YouTube video player"></iframe>
+            </div>
+            <div class="news-card" data-category="scandals">
+                <div class="news-text">
+                    <h3>Soldier Boy Kills His Own Team</h3>
+                    <p>Goes rogue and wipes out Payback, his former squad, during his revenge mission.</p>
+                </div>
+                <iframe width="560" height="315" src="https://www.youtube.com/embed/GL_Vp2WiU1I?si=L85nKrlXgcXAzJOg" title="YouTube video player"></iframe>
+            </div>
+            <div class="news-card" data-category="scandals">
+                <div class="news-text">
+                    <h3>Homelander Forces Deep to Eat His Own Friend</h3>
+                    <p>Makes The Deep eat his beloved octopus friend, Timothy.</p>
+                </div>
+                <iframe width="560" height="315" src="https://www.youtube.com/embed/PWMyi-ZtepQ?si=KckBU8I3YsXBraO1&amp;start=69" title="YouTube video player"></iframe>
+            </div>
+            <div class="news-card" data-category="public-outcry">
+                <div class="news-text">
+                    <h3>Queen Maeve’s Sexuality Used for PR</h3>
+                    <p>Vought exploits Maeve’s bisexuality for corporate branding.</p>
+                </div>
+                <iframe width="560" height="315" src="https://www.youtube.com/embed/uHnTY0pS8dM?si=vlU7bshjUnAopncN&amp;start=69" title="YouTube video player"></iframe>
+            </div>
+            <div class="news-card" data-category="public-outcry">
+                <div class="news-text">
+                    <h3>Starlight Publicly Exposes Vought</h3>
+                    <p>Goes live on social media to expose Vought’s lies and Homelander’s crimes.</p>
+                </div>
+                <iframe width="560" height="315" src="https://www.youtube.com/embed/hBJBOawTuuM?si=kS9bSdK3W-DBWYAr&amp;start=107" title="YouTube video player"></iframe>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

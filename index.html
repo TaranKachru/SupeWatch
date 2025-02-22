@@ -1,1 +1,280 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SupeWatch - Track the Legends</title>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Orbitron', sans-serif;
+            color: #FFFFFF;
+        }
 
+        /* Navigation Menu Styles */
+        .nav-menu {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            padding: 15px 0;
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .nav-logo {
+            color: #FF3131;
+            font-size: 24px;
+            font-weight: bold;
+            text-decoration: none;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 30px;
+        }
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            font-size: 16px;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: #FF3131;
+        }
+
+        /* Adjust parallax to account for menu */
+        .parallax {
+            height: 100vh;
+            background: url('https://www.grayscaleimage.com/wp-content/uploads/gray-images-uploads/2025/02/Grayscaleimage24233.jpg') no-repeat center center fixed;
+            background-size: cover;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding-top: 60px; /* Add padding to account for fixed menu */
+        }
+
+        .supewatch-title {
+            font-size: 50px;
+            font-weight: bold;
+            color: #FF3131;
+            text-shadow: 0 0 10px #FF3131, 0 0 20px #FF0000, 0 0 30px #990000;
+            animation: glitch 1.5s infinite alternate;
+        }
+
+        .parallax-alt {
+            height: 100vh;
+            background: url('https://wallpapercat.com/w/full/9/5/0/16162-1920x1213-desktop-hd-the-boys-background-photo.jpg') no-repeat center center fixed;
+            background-size: cover;
+        }
+
+        .parallax-third {
+            height: 100vh;
+            background: url('https://wallpaper.forfun.com/fetch/38/388d9e11785d4e8e0494eb7a2cdb2851.jpeg') no-repeat center center fixed;
+            background-size: cover;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .about-section {
+            background: rgba(0, 0, 0, 0.7);
+            padding: 40px;
+            text-align: center;
+            width: 80%;
+            max-width: 800px;
+            border-radius: 10px;
+            margin: 0;
+        }
+
+        .gallery-container {
+            background: rgba(44, 44, 44, 1);
+            padding: 20px 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+        }
+
+        .gallery {
+            display: flex;
+            overflow-x: hidden;
+            white-space: nowrap;
+            max-width: 80%;
+        }
+
+        .gallery img {
+            height: 150px;
+            margin: 0 10px;
+            border-radius: 10px;
+        }
+
+        .faq-container {
+            background: #2C2C2C;
+            padding: 50px 0;
+            text-align: center;
+        }
+
+        .faq {
+            width: 90%;
+            max-width: 1200px;
+            margin: auto;
+        }
+
+        .faq details {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 15px;
+            margin: 10px 0;
+            border-radius: 8px;
+        }
+
+        .faq summary {
+            font-size: 20px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        .footer {
+            background: black;
+            color: white;
+            text-align: center;
+            padding: 20px;
+        }
+
+        /* Mobile menu styles */
+        .menu-toggle {
+            display: none;
+            cursor: pointer;
+            font-size: 24px;
+        }
+
+        @media (max-width: 768px) {
+            .menu-toggle {
+                display: block;
+            }
+
+            .nav-links {
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                right: 0;
+                background: rgba(0, 0, 0, 0.9);
+                flex-direction: column;
+                padding: 20px;
+                text-align: center;
+            }
+
+            .nav-links.active {
+                display: flex;
+            }
+        }
+        
+    </style>
+</head>
+<body>
+    <!-- Navigation Menu -->
+    <nav class="nav-menu">
+        <div class="nav-container">
+            <a href="#" class="nav-logo">SupeWatch</a>
+            <div class="menu-toggle">☰</div>
+            <div class="nav-links">
+                <a href="#home">Home</a>
+                <a href="#gallery">Gallery</a>
+                <a href="#faq">FAQ</a>
+                <a href="#about">About</a>
+                <a href="#contact">Contact</a>
+            </div>
+        </div>
+    </nav>
+
+    <div class="parallax" id="home">
+        <div class="supewatch-title">SupeWatch</div>
+        <div class="tagline">Track the Legends. Follow the Chaos. Stay Updated.</div>
+        <button class="btn register-btn" onclick="window.location.href='xyz.com'" style="background: red; padding: 15px 30px; font-size: 18px; border: none; cursor: pointer;">Register Now</button>
+        <button class="btn register-btn" onclick="window.location.href='abc.com'" style="background: white; padding: 15px 30px; font-size: 18px; border: none; cursor: pointer;">Explore</button>
+    </div>
+    
+    <div class="gallery-container" id="gallery">
+        <div class="gallery">
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTlXc376QOSW67W4Y4i8WcCjJ3AUB4ruPcFsg&s" alt="Image 1">
+            <img src="https://assets-prd.ignimgs.com/2021/06/07/soldierboyfirstlook-4x5-1623083678333.jpg" alt="Image 2">
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ6bSqhYt0W-V_depQroixow2VY90sl946Isg&s" alt="Image 3">
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSyWDyE1ru9wDLScNU5aVIShGRbLZsw9g-vzw&s" alt="Image 4">
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQZs-n03VpSjW-k8AGmKEL80YTr0SURCewtMg&s" alt="Image 5">
+            <img src="https://hips.hearstapps.com/hmg-prod/images/sister-sage-susan-heyward-jpg-666b0794ec436.jpg" alt="Image 6">
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSsR70ejqNgODCP6udojnTZlTmQbghTj_Q3Gg&s" alt="Image 7">
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ4hoVgPnZNBpiH9MqLiQaJHoZQMNNHLde9DQ&s" alt="Image 8">
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTGBDQeD5SKigkonP7mfnEPwloqSmsnwNuPvQ&s" alt="Image 9">
+            
+        </div>
+    </div>
+    
+    <div class="parallax-alt"></div>
+    
+    <div class="faq-container" id="faq">
+        <div class="faq">
+            <h2>FAQs</h2>
+            <details>
+                <summary>What is SupeWatch?</summary>
+                <p>SupeWatch provides real-time updates on superhero activities.</p>
+            </details>
+            <details>
+                <summary>Is SupeWatch owned by Vought?</summary>
+                <p>No, SupeWatch is independently operated.</p>
+            </details>
+            <details>
+                <summary>Is SupeWatch affiliated with the Government</summary>
+                <p>No, SupeWatch is not affiliated with any department of the government and is completely independent</p>
+            </details>
+            <details>
+                <summary>Can I upload videos and clips of Supes on SupeWatch if I film their activities in public ?</summary>
+                <p>We have trained professionals who risk their lives on a daily basis to gather intel on superheroes and their activities. These people are go out of their way to do such things so the public is well informed on Supe activity. We don't encourage citizens to take such risks, However we do accept videos. Contact us and we will review your content before considering to post it.</p>
+            </details>
+        </div>
+    </div>
+    
+    <div class="parallax-third" id="about">
+        <div class="about-section">
+            <h2>About Us</h2>
+            <p>Welcome to SupeWatch, the ultimate source for tracking the most powerful figures in history. Stay informed, stay ahead.</p>
+        </div>
+    </div>
+    
+    <footer class="footer" id="contact">
+        <p>Contact Us: +1 234 567 890</p>
+    </footer>
+
+    <script>
+        // Mobile menu toggle
+        document.querySelector('.menu-toggle').addEventListener('click', function() {
+            document.querySelector('.nav-links').classList.toggle('active');
+        });
+
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+    </script>
+</body>
+</html>

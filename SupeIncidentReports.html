@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SupeWatch - Incident Reports</title>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            margin: 0;
+            position: relative;
+            font-family: 'Orbitron', sans-serif;
+            background: black;
+            color: white;
+            text-align: center;
+            transition: filter 0.5s ease-in-out;
+            /* Updated background image */
+            background-image: url('https://i.postimg.cc/BQhpm1tY/istockphoto-529399956-612x612-enhanced.png');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+        }
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px;
+            background: rgba(255, 49, 49, 0.8);
+        }
+        .logo {
+            font-size: 24px;
+            font-weight: bold;
+            color: white;
+        }
+        .back-button {
+            background: black;
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            font-weight: bold;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+        .back-button:hover {
+            background: gray;
+        }
+        .content {
+            padding: 20px;
+        }
+        .report-form {
+            background: rgba(255, 49, 49, 0.8);
+            padding: 20px;
+            border-radius: 10px;
+            width: 60%;
+            margin: 0 auto 20px;
+            text-align: left;
+        }
+        .report-form label {
+            display: block;
+            margin-bottom: 10px;
+            font-weight: bold;
+        }
+        .report-form input, .report-form textarea {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 20px;
+            border: none;
+            border-radius: 5px;
+            background: rgba(255, 255, 255, 0.9);
+            color: black;
+        }
+        .report-form button {
+            background: black;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            font-weight: bold;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+        .report-form button:hover {
+            background: gray;
+        }
+        .verified-reports {
+            background: rgba(255, 49, 49, 0.8);
+            padding: 20px;
+            border-radius: 10px;
+            width: 60%;
+            margin: 0 auto;
+            text-align: left;
+        }
+        .verified-reports h2 {
+            margin-top: 0;
+        }
+        .report-card {
+            background: rgba(0, 0, 0, 0.5);
+            padding: 15px;
+            border-radius: 10px;
+            margin-bottom: 15px;
+        }
+        .report-card h3 {
+            margin: 0 0 10px;
+        }
+        .report-card p {
+            margin: 0;
+        }
+    </style>
+    <script>
+        // Function to handle form submission
+        function submitReport(event) {
+            event.preventDefault();
+            const location = document.getElementById('location').value;
+            const time = document.getElementById('time').value;
+            const description = document.getElementById('description').value;
+
+            // Simulate saving the report (you can replace this with actual backend logic)
+            const report = {
+                location,
+                time,
+                description,
+                verified: false // Default to unverified
+            };
+
+            // Display the report in the verified reports section (for demo purposes)
+            const verifiedReports = document.getElementById('verified-reports');
+            const reportCard = document.createElement('div');
+            reportCard.classList.add('report-card');
+            reportCard.innerHTML = `
+                <h3>Location: ${report.location}</h3>
+                <p><strong>Time:</strong> ${report.time}</p>
+                <p><strong>Description:</strong> ${report.description}</p>
+                <p><strong>Status:</strong> ${report.verified ? 'Verified' : 'Unverified'}</p>
+            `;
+            verifiedReports.appendChild(reportCard);
+
+            // Clear the form
+            document.getElementById('report-form').reset();
+            alert('Report submitted successfully!');
+        }
+    </script>
+</head>
+<body>
+    <div class="header">
+        <div class="logo">SupeWatch</div>
+        <button class="back-button" onclick="window.location.href='navhub.html'">Back to Nav Hub</button>
+    </div>
+    <div class="content">
+        <h1>Incident Reports</h1>
+        <div class="report-form" id="report-form">
+            <h2>Report a Supe Sighting or Incident</h2>
+            <form onsubmit="submitReport(event)">
+                <label for="location">Location:</label>
+                <input type="text" id="location" name="location" required>
+                
+                <label for="time">Time:</label>
+                <input type="datetime-local" id="time" name="time" required>
+                
+                <label for="description">Description:</label>
+                <textarea id="description" name="description" rows="5" required></textarea>
+                
+                <button type="submit">Submit Report</button>
+            </form>
+        </div>
+        <div class="verified-reports">
+            <h2>Verified Reports</h2>
+            <div id="verified-reports">
+                <!-- Verified reports will be dynamically added here -->
+                <div class="report-card">
+                    <h3>Location: Downtown</h3>
+                    <p><strong>Time:</strong> 2023-10-15 14:30</p>
+                    <p><strong>Description:</strong> Homelander spotted flying over downtown.</p>
+                    <p><strong>Status:</strong> Verified</p>
+                </div>
+                <div class="report-card">
+                    <h3>Location: Oceanland</h3>
+                    <p><strong>Time:</strong> 2023-10-14 10:15</p>
+                    <p><strong>Description:</strong> The Deep seen freeing a dolphin.</p>
+                    <p><strong>Status:</strong> Verified</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

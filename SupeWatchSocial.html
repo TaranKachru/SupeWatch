@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SupeWatch - Social Interaction</title>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            margin: 0;
+            position: relative;
+            font-family: 'Orbitron', sans-serif;
+            background: black;
+            color: white;
+            text-align: center;
+            transition: filter 0.5s ease-in-out;
+            /* Placeholder background image */
+            background-image: url('https://example.com/background.jpg');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+        }
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px;
+            background: rgba(255, 49, 49, 0.8);
+        }
+        .logo {
+            font-size: 24px;
+            font-weight: bold;
+            color: white;
+        }
+        .back-button {
+            background: black;
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            font-weight: bold;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+        .back-button:hover {
+            background: gray;
+        }
+        .content {
+            padding: 20px;
+        }
+        .news-container, .incident-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 20px;
+        }
+        .news-card, .incident-card {
+            background: rgba(255, 49, 49, 0.8);
+            padding: 20px;
+            border-radius: 10px;
+            width: 80%;
+            margin-bottom: 20px;
+            text-align: left;
+        }
+        .news-card h3, .incident-card h3 {
+            margin-top: 0;
+        }
+        .news-card p, .incident-card p {
+            margin: 10px 0;
+        }
+        .interaction-buttons {
+            display: flex;
+            gap: 10px;
+            margin-top: 15px;
+        }
+        .interaction-buttons button {
+            background: black;
+            color: white;
+            border: none;
+            padding: 5px 10px;
+            font-weight: bold;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+        .interaction-buttons button:hover {
+            background: gray;
+        }
+        .trust-factor {
+            margin-top: 10px;
+            font-size: 14px;
+            color: #ccc;
+        }
+        .comments-section {
+            margin-top: 15px;
+            display: none; /* Hidden by default */
+        }
+        .comments-section textarea {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+            border: none;
+            border-radius: 5px;
+            background: rgba(255, 255, 255, 0.9);
+            color: black;
+        }
+        .comments-section button {
+            background: black;
+            color: white;
+            border: none;
+            padding: 5px 10px;
+            font-weight: bold;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+        .comments-section button:hover {
+            background: gray;
+        }
+        .comment {
+            background: rgba(0, 0, 0, 0.5);
+            padding: 10px;
+            border-radius: 5px;
+            margin-bottom: 10px;
+        }
+        .comment p {
+            margin: 0;
+        }
+    </style>
+    <script>
+        // Function to handle upvoting (single upvote per post)
+        function upvote(element) {
+            const upvoteButton = element.querySelector('.upvote-button');
+            if (!upvoteButton.disabled) {
+                const upvoteCount = element.querySelector('.upvote-count');
+                let count = parseInt(upvoteCount.textContent);
+                count++;
+                upvoteCount.textContent = count;
+                upvoteButton.disabled = true;
+                upvoteButton.textContent = 'Upvoted';
+            }
+        }
+
+        // Function to toggle comment section visibility
+        function toggleComments(button) {
+            const commentsSection = button.closest('.news-card').querySelector('.comments-section');
+            commentsSection.style.display = commentsSection.style.display === 'block' ? 'none' : 'block';
+        }
+
+        // Function to add a new comment
+        function addComment(button) {
+            const commentsSection = button.closest('.comments-section');
+            const commentInput = commentsSection.querySelector('textarea');
+            const commentText = commentInput.value.trim();
+            if (commentText) {
+                const comments = commentsSection.querySelector('.comments');
+                const comment = document.createElement('div');
+                comment.classList.add('comment');
+                comment.innerHTML = `<p><strong>User123:</strong> ${commentText}</p>`;
+                comments.appendChild(comment);
+                commentInput.value = '';
+            }
+        }
+    </script>
+</head>
+<body>
+    <div class="header">
+        <div class="logo">SupeWatch</div>
+        <button class="back-button" onclick="window.location.href='navhub.html'">Back to Nav Hub</button>
+    </div>
+    <div class="content">
+        <h1>Social Interaction</h1>
+        <div class="news-container">
+            <!-- Post 1 -->
+            <div class="news-card">
+                <h3>Homelander's Plane Incident</h3>
+                <p>Homelander and Queen Maeve let a commercial plane crash, refusing to save the passengers.</p>
+                <div class="interaction-buttons">
+                    <button class="upvote-button" onclick="upvote(this.parentElement.parentElement)">
+                        Upvote (<span class="upvote-count">0</span>)
+                    </button>
+                    <button onclick="toggleComments(this)">Comment</button>
+                </div>
+                <div class="trust-factor">Trust Factor: 85%</div>
+                <div class="comments-section">
+                    <div class="comments">
+                        <div class="comment">
+                            <p><strong>User456:</strong> This is horrifying! How can they just stand by and watch?</p>
+                        </div>
+                        <div class="comment">
+                            <p><strong>User789:</strong> Homelander is a monster. Vought needs to be held accountable.</p>
+                        </div>
+                    </div>
+                    <textarea placeholder="Add a comment..."></textarea>
+                    <button onclick="addComment(this)">Submit</button>
+                </div>
+            </div>
+            <!-- Post 2 -->
+            <div class="news-card">
+                <h3>A-Train Kills Robin</h3>
+                <p>A-Train runs through Hughie's girlfriend Robin at super-speed, killing her instantly.</p>
+                <div class="interaction-buttons">
+                    <button class="upvote-button" onclick="upvote(this.parentElement.parentElement)">
+                        Upvote (<span class="upvote-count">0</span>)
+                    </button>
+                    <button onclick="toggleComments(this)">Comment</button>
+                </div>
+                <div class="trust-factor">Trust Factor: 92%</div>
+                <div class="comments-section">
+                    <div class="comments">
+                        <div class="comment">
+                            <p><strong>User101:</strong> A-Train needs to be stopped. This is unacceptable!</p>
+                        </div>
+                        <div class="comment">
+                            <p><strong>User202:</strong> My heart goes out to Robin's family. This is so tragic.</p>
+                        </div>
+                    </div>
+                    <textarea placeholder="Add a comment..."></textarea>
+                    <button onclick="addComment(this)">Submit</button>
+                </div>
+            </div>
+            <!-- Post 3 -->
+            <div class="news-card">
+                <h3>Homelander's Speech at Vought Tower</h3>
+                <p>Homelander shocks the world with a speech revealing his true beliefs and brutal honesty.</p>
+                <div class="interaction-buttons">
+                    <button class="upvote-button" onclick="upvote(this.parentElement.parentElement)">
+                        Upvote (<span class="upvote-count">0</span>)
+                    </button>
+                    <button onclick="toggleComments(this)">Comment</button>
+                </div>
+                <div class="trust-factor">Trust Factor: 78%</div>
+                <div class="comments-section">
+                    <div class="comments">
+                        <div class="comment">
+                            <p><strong>User303:</strong> Homelander is terrifying. He’s completely unhinged.</p>
+                        </div>
+                        <div class="comment">
+                            <p><strong>User404:</strong> This speech was a wake-up call for everyone.</p>
+                        </div>
+                    </div>
+                    <textarea placeholder="Add a comment..."></textarea>
+                    <button onclick="addComment(this)">Submit</button>
+                </div>
+            </div>
+            <!-- Add more posts here (up to 10-12) -->
+        </div>
+    </div>
+</body>
+</html>
